@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+  <meta content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="./css/KnightsTour.css"></link>
+  <script type="text/javascript" src="./src/KnightsTour.js" charset="UTF-8" defer></script>
+</head>
+
+<body>
+  <div>
+    <button id="button01" name="button" onclick="clickStart()">Start!</button>
+    <span>高さ<input id="height" type="text" name="" value="8" /></span>
+    <span>幅<input id="width" type="text" name="" value="8" /></span>
+    <span>インターバル<input id="interval" type="text" name="" value="0" />msec</span>
+  </div>
+  <div id="result">
+  </div>
+</body>
+
+</html>
+<script type="text/javascript">
+function clickStart() {
+  let h = Number(document.getElementById("height").value);
+  let w = Number(document.getElementById("width").value);
+  let i = Number(document.getElementById("interval").value);
+
+  if (isNaN(h) || isNaN(w)) {
+    document.getElementById("result").innerHTML = "数値を入力";
+    return false;
+  }
+  KnightsTour({
+    "table": Array(h).fill(Array(w).fill(unStepped)),
+  }, i)
+}
+
+</script>
