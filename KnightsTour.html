@@ -25,7 +25,7 @@ function clickStart() {
   let w = Number(document.getElementById("width").value);
   let i = Number(document.getElementById("interval").value);
 
-  if (isNaN(h) || isNaN(w)) {
+  if (isNaN(h) || isNaN(w) || isNaN(i)) {
     document.getElementById("result").innerHTML = "数値を入力";
     return false;
   }
