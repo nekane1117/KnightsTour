@@ -7,6 +7,10 @@
 - 詳細はこちら(Wikipediaへのリンク)  
     https://en.wikipedia.org/wiki/Knight%27s_tour
 
+## デモ
+
+-   [DEMO](https://nekane1117.github.io/KnightsTour/)
+
 ## 機能  
 - [Start!]を押下するとKnight's Tourを解く様子が見られます。
 - Warnsdorf's ruleを使用して、比較的早く解くことができます。
