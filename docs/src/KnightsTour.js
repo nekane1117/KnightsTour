@@ -14,20 +14,16 @@ const tableStr =
 ]`;
 // ナイトの移動方向
 const KnightMove = [
-  [-2, -1],
-  [-2, 1],
-  [2, -1],
-  [2, 1],
-  [-1, -2],
-  [-1, 2],
-  [1, -2],
-  [1, 2]
+  [-1, -2], // 左上
+  [-2, -1], // 上左
+  [-2, 1],  // 上右
+  [-1, 2],  // 右上
+  [1, 2],   // 右下
+  [2, 1],   // 下右
+  [2, -1],  // 下左
+  [1, -2]   // 左下
 ];
-// 順番をランダムに変更する
-function KnightMoveRandomize() {
-  return KnightMove.reduce((a, c) => Math.random() < 0.5 ? [c].concat(a) : (a.push(c), a), []);
-  //return JsonDeepCopy(KnightMove);
-}
+
 /**
  * JSON用ディープコピーメソッド
  * @param       {Object} json コピー元オブジェクト
@@ -120,7 +116,7 @@ async function step(json = {
     }
     // 次の手を作る
     // 未確認のマスを取得する
-    json.unTested = json.unTested || KnightMoveRandomize().filter(move => isUnstepped(json.table,
+    json.unTested = json.unTested || KnightMove.filter(move => isUnstepped(json.table,
       json.location.y + move[0], json.location.x + move[1])).sort((m1, m2) => {
       return childMoveCount(json.table, [json.location.y + m1[0], json.location.x + m1[1]]) -
         childMoveCount(json.table, [json.location.y + m2[0], json.location.x + m2[1]]);
@@ -145,7 +141,7 @@ async function step(json = {
       return {
         "table": newTable,
         "location": newLocation,
-        "unTested": KnightMoveRandomize().filter(move => isUnstepped(json.table, newLocation.y +
+        "unTested": KnightMove.filter(move => isUnstepped(json.table, newLocation.y +
           move[0], newLocation.x + move[1])).sort((m1, m2) => {
           return childMoveCount(json.table, [newLocation.y + m1[0], newLocation.x + m1[1]]) -
             childMoveCount(json.table, [newLocation.y + m2[0], newLocation.x + m2[1]]);
